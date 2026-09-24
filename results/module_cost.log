@@ -1,0 +1,23 @@
+========================================================================
+PAPER 2 DECISIVE TEST -- Busia as main model, MIT-BIH DS2
+Both mechanisms only SUPPRESS. Fair question: at equal sensitivity,
+which gives fewer false alarms?
+========================================================================
+mechanism                   k  falseAl/day  episode Se  trueEps
+------------------------------------------------------------------------
+timing rule only            1         41.3         90%     3046
+timing rule only            2          6.5         43%      145
+timing rule only            3          2.2         16%       19
+timing rule only            4          2.2          0%        5
+
+module: +1 other agrees     1          0.0         64%     3046
+module: +both agree         1          0.0          0%     3046
+module: +1 other agrees     2          0.0          7%      145
+module: +both agree         2          0.0          0%      145
+
+========================================================================
+MATCHED-SENSITIVITY COMPARISON
+========================================================================
+Se >= 70%:  no matched pair available
+Se >= 50%:  timing 41.3/day (timing only k=1, Se 90%)  vs  module 0.0/day (+1 other agrees k=1, Se 64%)   -> MODULE WINS
+Se >= 30%:  timing 6.5/day (timing only k=2, Se 43%)  vs  module 0.0/day (+1 other agrees k=1, Se 64%)   -> MODULE WINS

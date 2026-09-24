@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Alarm Burden in Embedded Arrhythmia Detection"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: "Hassani Shariat Panahi"
+    given-names: "Parsa"
+    affiliation: "Iran University of Science and Technology"
+  - family-names: "Jalilvand"
+    given-names: "Amir H."
+    affiliation: "Iran University of Science and Technology"
+  - family-names: "Najafi"
+    given-names: "M. Hassan"
+    affiliation: "Case Western Reserve University"
+repository-code: "https://github.com/F4RAN/arrhythmia-alarm-burden"
+license: MIT
+year: 2026

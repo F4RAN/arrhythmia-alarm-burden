@@ -1,0 +1,14 @@
+==========================================================================
+WHEN TO WAKE THE MODULE -- Busia main, DS2
+==========================================================================
+strategy                        k  falseAl/d     Se  module runs
+--------------------------------------------------------------------------
+per-beat (current build)        1        0.0    64%        2,355
+episode gate (prof design)      1        0.0    64%        2,300
+episode gate, Farag only        1        0.0    64%        2,300
+
+per-beat (current build)        2        0.0     7%        2,355
+episode gate (prof design)      2        4.4    26%           50
+episode gate, Farag only        2        4.4    26%           50
+
+module runs = number of times the side module is activated over 11 h

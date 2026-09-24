@@ -1,0 +1,15 @@
+beats scored: 603,865 across 6 healthy records
+
+ALL these flags are FALSE POSITIVES (healthy subjects)
+  Busia       250,993 false flags
+  Farag       428,026 false flags
+  ArrythML    577,812 false flags
+
+Jaccard overlap of false positives:
+                 Busia      Farag   ArrythML
+Busia            1.000      0.402      0.430
+Farag            0.402      1.000      0.724
+ArrythML         0.430      0.724      1.000
+
+union 584,099   all-three-wrong 193,887  (33.2% of union)
+compare: 4 diverse sklearn families gave 0.5% all-wrong

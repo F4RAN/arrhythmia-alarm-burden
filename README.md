@@ -14,7 +14,6 @@ to alarms per 24 h, and the episode-gated verification module that reduces them.
 | `04_module/` | the episode-gated verification module |
 | `05_evaluation/` | alarm rates, matched-sensitivity comparison, error overlap |
 | `Data/` | provenance only; no corpus is redistributed |
-| `06_figures/` | scripts that generate every figure in the papers |
 | `results/` | raw run outputs quoted in the papers |
 
 ## Headline results

@@ -22,23 +22,27 @@ Trained on MIT-BIH DS1, evaluated patient-disjoint on DS2 and on 437.5 h of
 normal sinus rhythm (1,806,778 beats), where every alarm is false by
 construction.
 
-| Detector | Params | DS2 Se/PPV | FA/24 h k=1 | FA/24 h k=6 |
+| Detector | Params (ours) | DS2 Se/PPV | FA/24 h k=1 | FA/24 h k=6 |
 |---|---:|---|---:|---:|
-| Busia 2024 | 6,353 | 42.6 / 98.0 | 70.27 | 0.11 |
-| Farag 2023 | 1,349 | 20.2 / 86.3 | 110.15 | 2.47 |
+| Busia 2024 | 6,353 | 42.4 / 98.0 | 70.27 | 0.11 |
+| Farag 2023 | 1,349 | 20.0 / 86.3 | 110.15 | 2.47 |
 | ArrythML 2026 | 166,868 | 0.1 / 5.0 | 201.88 | 145.87 |
 
 The 0.11 figure is not a usable operating point: at k=6 that detector attains
-zero episode sensitivity on a partition containing 103 annotated ventricular
-runs of length six or greater. Reporting the alarm rate together with the
+zero episode sensitivity on a partition containing 103 annotated abnormal
+runs (V, S, F or Q) of length six or greater. Reporting the alarm rate together with the
 episode sensitivity retained at the same operating point is the central
 methodological claim.
 
-The episode-gated module retains 64% episode sensitivity on DS2 with no
+The episode-gated module retains 64% episode sensitivity on DS2 at k=1 with no
 unmatched alarm, against 43% at 6.5 false alarms per 24 h for temporal gating
-alone. Activating the verifier once per candidate episode rather than once per
-positive beat raises sensitivity from 7% to 26% at k=2 while reducing
-activations on DS2 by a factor of 47.
+alone. At k=2, activating the verifier once per candidate episode rather than
+once per positive beat raises sensitivity from 7% to 26% while reducing
+activations on DS2 by a factor of 47; on healthy recordings the verifier then
+wakes about 25 times per day, 0.6% of the primary detector's energy.
+
+The 300 s refractory window is applied to the healthy-subject alarm rates only.
+The DS2 comparisons and the activation counts of the module use none.
 
 ## Reproducing
 
@@ -53,9 +57,10 @@ activations on DS2 by a factor of 47.
     ./.venv/bin/python 05_evaluation/final_eval.py
     ./.venv/bin/python 04_module/episode_gate.py
     ./.venv/bin/python 05_evaluation/module_cost.py
-    ./.venv/bin/python 05_evaluation/corr.py
+    ./.venv/bin/python 05_evaluation/corr.py            # overlap of the three detectors
+    ./.venv/bin/python 05_evaluation/family_overlap.py  # overlap of four model families
 
-Thresholds are calibrated on a held-out 20% of DS1 records so that each detector
+Thresholds are calibrated on 5 of the 22 DS1 records, held out from training, so that each detector
 flags 1% of normal beats, placing the three at a common operating point.
 
 ## Limitations recorded in the papers
@@ -64,7 +69,7 @@ Episode counts on DS2 are small: 145 annotated ventricular runs at k=2 and 19 at
 k=3, and two at k=5, so estimates at clinically relevant episode lengths rest on
 few events. Peak sensitivity across all configurations is 64%, a property of the
 primary detector under inter-patient evaluation rather than of the module. The
-Farag reimplementation attains 20.2% sensitivity against 98.18% reported; this
+Farag reimplementation attains 20.0% sensitivity, against the 98.18% accuracy reported; this
 is a property of the reimplementation and should not be read as a statement
 about that method.
 

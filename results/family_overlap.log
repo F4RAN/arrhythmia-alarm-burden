@@ -1,0 +1,12 @@
+MLP FP beats 8633
+RF FP beats 1338
+ET FP beats 1226
+LR FP beats 1665
+evaluated on DS2: 49,698 beats, 44,246 normal (FP = flagged normal beat)
+Jaccard RF-ET: 0.474
+Jaccard MLP-RF: 0.107
+Jaccard MLP-ET: 0.126
+Jaccard MLP-LR: 0.059
+Jaccard RF-LR: 0.047
+Jaccard ET-LR: 0.035
+all-four-wrong 48 of union 10066 = 0.48%
